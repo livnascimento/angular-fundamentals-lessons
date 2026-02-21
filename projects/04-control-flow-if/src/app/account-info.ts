@@ -1,5 +1,5 @@
 export interface AccountInfo {
-  name: string;
+  name:  string;
   membershipStatus: 'silver' | 'gold' | 'platinum';
   validThru: string;
   CVV: string;
