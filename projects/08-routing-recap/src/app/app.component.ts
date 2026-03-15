@@ -5,10 +5,12 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: ` <h1>Welcome to {{ title }}!</h1> `,
+  template: ` 
+    <h1>Welcome to {{ title }}!</h1> 
+    <router-outlet />
+  `, 
 })
 export class AppComponent {
   title = '08-routing-recap';
 
-  productTitles = ['Product 1', 'Product 2', 'Product 3'];
 }
