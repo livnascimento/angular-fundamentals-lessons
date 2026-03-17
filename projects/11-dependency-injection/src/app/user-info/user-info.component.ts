@@ -1,38 +1,26 @@
-import { Component } from '@angular/core';
-import { User } from '../data';
+import { Component, Input } from '@angular/core';
+import { data, User } from '../data';
 
 @Component({
   selector: 'app-user-info',
   standalone: true,
   template: `
-    <p>{{ user.id }} {{ user.email }}</p>
-    <!-- add more properties to customize -->
+  @for (user of users; track $index) {
+    <section style="display: flex; flex-direction: row; margin: 16px;">
+      <article style="padding: 8px; border: solid 1px gray;">
+        <h3>{{ user.name }}</h3>
+        <h4>{{user.username}} - {{ user.email }}</h4>
+        <p>🔗 {{user.website}}</p>
+        <p>☎️ {{user.phone}}</p>
+        <p>🏠 {{user.address.street}}, {{user.address.city}} - {{user.address.zipcode}}</p>
+        <p>🏭 {{user.company.name}}</p>
+      </article>
+    </section>
+  }
   `,
   styles: ``,
 })
 export class UserInfoComponent {
-  // Test user data
-  user: User = {
-    id: -1,
-    name: 'Ervin Howell',
-    username: 'Antonette',
-    email: 'Shanna@melissa.tv',
-    address: {
-      street: 'Victor Plains',
-      suite: 'Suite 879',
-      city: 'Wisokyburgh',
-      zipcode: '90566-7771',
-      geo: {
-        lat: '-43.9509',
-        lng: '-34.4618',
-      },
-    },
-    phone: '010-692-6593 x09125',
-    website: 'anastasia.net',
-    company: {
-      name: 'Deckow-Crist',
-      catchPhrase: 'Proactive didactic contingency',
-      bs: 'synergize scalable supply-chains',
-    },
-  };
+  @Input()
+  users: User[] = [];
 }
