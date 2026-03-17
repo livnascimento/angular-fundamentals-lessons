@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +10,20 @@ import { Component } from '@angular/core';
       <section>
         <label for="title">Post Title</label>
         <!-- add the input -->
-
+        <input type="text" [(ngModel)]="title"/>
         <label for="body">Post Body</label>
         <!-- add the textarea -->
+         <textarea [(ngModel)]="body"></textarea>
       </section>
-      <!-- <section>
-        <p>Display title</p>
-        <p>Display value</p>
-      </section> -->
+      <section>
+        <p>{{ title }}</p>
+        <p>{{ body }}</p>
+      </section>
     </article>
   `,
+  imports: [FormsModule]
 })
 export class AppComponent {
   title = '09-template-driven-forms';
+  body: string = "";
 }
